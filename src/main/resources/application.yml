@@ -11,3 +11,6 @@ netty:
   default:
     allocator:
       max-order: 3
+app:
+  db:
+    name: example

@@ -14,7 +14,7 @@ class EmployeeController(
 
     @Post
     fun create(@Body request: EmployeeRequest): HttpResponse<Void> {
-        val createdId = employeeService.createEmployee(request)
+        val createdId = employeeService.create(request)
 
         return HttpResponse.created(
             URI.create(
@@ -46,7 +46,7 @@ class EmployeeController(
         @PathVariable id: String,
         @Body request: EmployeeRequest
     ): HttpResponse<EmployeeResponse> {
-        val updatedEmployee = employeeService.updateEmployee(id, request)
+        val updatedEmployee = employeeService.update(id, request)
 
         return HttpResponse.ok(
             EmployeeResponse.fromEntity(updatedEmployee)

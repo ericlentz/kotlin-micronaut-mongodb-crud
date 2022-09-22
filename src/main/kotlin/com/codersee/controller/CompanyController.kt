@@ -8,13 +8,11 @@ import io.micronaut.http.annotation.*
 import java.net.URI
 
 @Controller("/api/company")
-class CompanyController(
-    private val companyService: CompanyService
-) {
+class CompanyController(private val companyService: CompanyService) {
 
     @Post
     fun create(@Body request: CompanyRequest): HttpResponse<Void> {
-        val createdId = companyService.createCompany(request)
+        val createdId = companyService.create(request)
 
         return HttpResponse.created(
             URI.create(
@@ -46,7 +44,7 @@ class CompanyController(
         @PathVariable id: String,
         @Body request: CompanyRequest
     ): HttpResponse<CompanyResponse> {
-        val updatedCompany = companyService.updateCompany(id, request)
+        val updatedCompany = companyService.update(id, request)
 
         return HttpResponse.ok(
             CompanyResponse.fromEntity(updatedCompany)

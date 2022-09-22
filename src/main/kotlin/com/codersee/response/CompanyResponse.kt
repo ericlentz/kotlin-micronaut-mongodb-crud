@@ -10,7 +10,7 @@ class CompanyResponse(
     companion object {
         fun fromEntity(company: Company): CompanyResponse =
             CompanyResponse(
-                id = company.id!!.toHexString(),
+                id = company.id?.toHexString() ?: "",
                 name = company.name,
                 address = company.address
             )

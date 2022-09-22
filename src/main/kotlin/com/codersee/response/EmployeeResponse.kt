@@ -13,7 +13,7 @@ class EmployeeResponse(
     companion object {
         fun fromEntity(employee: Employee): EmployeeResponse =
             EmployeeResponse(
-                id = employee.id!!.toHexString(),
+                id = employee.id?.toHexString() ?: "",
                 firstName = employee.firstName,
                 lastName = employee.lastName,
                 email = employee.email,
